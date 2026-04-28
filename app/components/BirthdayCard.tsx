@@ -3,6 +3,7 @@ interface BirthdayUser {
   id: number;
   name: string;
   age: number;
+  date: string;
   image_url: string;
 }
 
@@ -24,7 +25,8 @@ const BirthdayCard = ({ users }: BirthdayCardProps) => {
           /> 
           <div className="py-2"> 
             <p className="font-bold">{user.name}</p> 
-            <small className="text-[#7a7a7a]">{user.age} years</small> 
+            <small className="text-[#7a7a7a] mr-2">{user.age} years</small> 
+            <small className="text-[#7a7a7a]">{user.date}</small> 
           </div> 
         </li> 
       ))} 
