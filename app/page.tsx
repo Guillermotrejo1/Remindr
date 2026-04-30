@@ -93,6 +93,9 @@ export default function Home() {
   });
 
   return (
+    <div>
+      <h1 className="text-center mt-4 text-6xl font-bold">Remindr</h1>
+      
     <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 p-5 items-start">
       {usersByMonth.map(({ monthName, users }) => (
         <MonthCard
@@ -103,10 +106,8 @@ export default function Home() {
         />
       ))}
     </main>
+    </div>
+
   );
 }
 
-//babe
-// "https://lh3.googleusercontent.com/a-/ALV-UjVBjorBCGP5DRoapWyKSiIoNxaBn2netwAm3Vg8hN8qRYhc7zf7mg=s40-p",
-//memito
-// "https://ci3.googleusercontent.com/meips/ADKq_NZrgDcZhKTzdIZOaM7QhZZ4r7eyXpbPf4hlTQpGZ6MdYhEZ1ES60Nv1vxxIARhTERro0jUFQ-PIR9ELnVbj-ax7XfRiSjc3-3R1Z39MPB8z70smG1aMEGjW6p7w7ziiBS2IVIagX1pbQ3Y9Md6ReCWyp4Z6hHLvUS_CAcPfs-a-7pAIPO_GXL9bkSGkF_aOXeTjNPn-=s0-d-e1-ft#https://cdn.glofox.com/platform/kidstronglive/branches/679cf63d82b8c088f00f6340/users/68138101fa97f010420f4bb6.png?v=1776783746",

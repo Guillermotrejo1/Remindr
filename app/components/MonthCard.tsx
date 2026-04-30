@@ -23,6 +23,10 @@ const MonthCard = ({ monthName, users, initialShow = 3 }: MonthCardProps) => {
     setDisplayCount(prev => prev + 1);
   }
 
+  function showLess() {
+    setDisplayCount(initialShow);
+  }
+
   const visibleUsers = users.slice(0, displayCount);
 
   return (
@@ -40,13 +44,22 @@ const MonthCard = ({ monthName, users, initialShow = 3 }: MonthCardProps) => {
         <>
           <BirthdayCard users={visibleUsers} />
           
-          {displayCount < users.length && (
-            <button 
-              onClick={showMore} 
-              className="cursor-pointer w-full rounded-sm border-0 bg-linear-to-r from-[#f30c0c] to-[#e68c05] p-2 text-[0.9rem] font-bold tracking-wide text-white hover:opacity-90"
-            > 
-              View More ({users.length - displayCount} remaining)
-            </button>
+          {users.length > initialShow && (
+            displayCount < users.length ? (
+              <button 
+                onClick={showMore} 
+                className="cursor-pointer w-full rounded-sm border-0 bg-linear-to-r from-[#f30c0c] to-[#e68c05] p-2 text-[0.9rem] font-bold tracking-wide text-white hover:opacity-90"
+              > 
+                View More ({users.length - displayCount} remaining)
+              </button>
+            ) : (
+              <button 
+                onClick={showLess} 
+                className="cursor-pointer w-full rounded-sm border-0 bg-linear-to-r from-[#f30c0c] to-[#e68c05] p-2 text-[0.9rem] font-bold tracking-wide text-white hover:opacity-90"
+              > 
+                View Less
+              </button>
+            )
           )}
         </>
       )}
