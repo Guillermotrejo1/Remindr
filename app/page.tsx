@@ -1,5 +1,8 @@
 "use client";
+import { useState } from "react";
 import MonthCard from "./components/MonthCard";
+import BirthdayModal from "./components/BirthdayModal";
+import type { NewBirthdayInput } from "./components/BirthdayModal";
 
 interface BirthdayUser {
   id: number;
@@ -10,7 +13,9 @@ interface BirthdayUser {
 }
 
 export default function Home() {
-  const allUsers: BirthdayUser[] = [
+  const [isOpen, setIsOpen] = useState(false);
+
+  const [allUsers, setAllUsers] = useState<BirthdayUser[]>([
     { id: 1, name: "Alisa Bosconovitch", age: 37, date: "01/25", image_url: "https://cdn.dashfight.com/9c019ad3b38050f88f70b5a401181afb8b62ca46_224.png" },
     {
       id: 2,
@@ -65,7 +70,7 @@ export default function Home() {
     { id: 46, name: "Yoshimitsu", age: 10, date: "12/18", image_url: "https://cdn.dashfight.com/084135e9693289180f1c9e56117dd4119f37886b_224.png" },
     { id: 47, name: "Safina", age: 10, date: "12/18", image_url: "https://cdn.dashfight.com/884d56a2fe38f319b1691cf7dce71fa79f49f596_224.png" },
     { id: 48, name: "Steve Fox", age: 10, date: "12/18", image_url: "https://cdn.dashfight.com/93a601e75aac3898fc715147513a6c42d8c1a4a2_224.png" },
-  ];
+  ]);
 
   const months = [
     "January",
@@ -92,10 +97,29 @@ export default function Home() {
     return { monthName, users: monthUsers };
   });
 
+  function showModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function handleAddBirthday(birthday: NewBirthdayInput) {
+    setAllUsers((prevUsers) => {
+      const nextId =
+        prevUsers.length > 0 ? Math.max(...prevUsers.map((user) => user.id)) + 1 : 1;
+      return [...prevUsers, { id: nextId, ...birthday }];
+    });
+    setIsOpen(false);
+  }
+
   return (
     <div>
       <h1 className="text-center mt-4 text-6xl font-bold">Remindr</h1>
-      
+      <div className="flex w-full items-center justify-center">
+        <button onClick={showModal} className="max-w-125 border rounded-sm p-2 text-center cursor-pointer bg-linear-to-r from-[#f30c0c] to-[#e68c05]">Add Birthday 🎉</button>
+      </div>
     <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 p-5 items-start">
       {usersByMonth.map(({ monthName, users }) => (
         <MonthCard
@@ -105,9 +129,11 @@ export default function Home() {
           initialShow={3}
         />
       ))}
+      {isOpen ? <BirthdayModal onClose={closeModal} onSubmit={handleAddBirthday} /> : null}
     </main>
     </div>
 
   );
 }
 
+// add a new birthday 🎉
