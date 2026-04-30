@@ -21,8 +21,7 @@
 } */
 
 body {
-  background: rgb(248, 157, 206);
-  color: var(--foreground);
+  background: rgb(157, 222, 248);
   font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;

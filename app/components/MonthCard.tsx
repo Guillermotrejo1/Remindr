@@ -26,10 +26,10 @@ const MonthCard = ({ monthName, users, initialShow = 3 }: MonthCardProps) => {
   const visibleUsers = users.slice(0, displayCount);
 
   return (
-    <div className="bg-white p-8 w-full rounded-lg shadow-custom min-h-40">
+    <div className="bg-[#FEFFFC] p-8 w-full rounded-lg shadow-custom min-h-40">
       <h1 className="font-bold text-2xl">{monthName}</h1>
       <h2 className="mb-4 text-[#7a7a7a]">
-        {users.length} Birthday{users.length !== 1 ? 's' : ''}
+        {users.length} Birthday{users.length !== 1 ? 's' : ''} 🎂
       </h2>
       
       {users.length === 0 ? (
@@ -43,7 +43,7 @@ const MonthCard = ({ monthName, users, initialShow = 3 }: MonthCardProps) => {
           {displayCount < users.length && (
             <button 
               onClick={showMore} 
-              className="cursor-pointer w-full rounded-sm border-0 bg-linear-to-r from-[#e23cd9] to-[#f07acc] p-2 text-[0.9rem] font-bold tracking-wide text-white hover:opacity-90"
+              className="cursor-pointer w-full rounded-sm border-0 bg-linear-to-r from-[#f30c0c] to-[#e68c05] p-2 text-[0.9rem] font-bold tracking-wide text-white hover:opacity-90"
             > 
               View More ({users.length - displayCount} remaining)
             </button>
