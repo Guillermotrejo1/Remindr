@@ -1,6 +1,6 @@
 
 "use client";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 export interface NewBirthdayInput {
   name: string;
@@ -48,7 +48,7 @@ const BirthdayModal = ({ onClose, onSubmit }: BirthdayModalProps) => {
     return Object.keys(next).length === 0;
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!validate()) return;
     const mm = String(Number(month)).padStart(2, "0");
