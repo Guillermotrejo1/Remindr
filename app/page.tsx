@@ -4,7 +4,7 @@ import { useAuth } from "react-oidc-context";
 import MonthCard from "./components/MonthCard";
 import BirthdayModal from "./components/BirthdayModal";
 import type { NewBirthdayInput } from "./components/BirthdayModal";
-import { API_URL } from "@/src/lib/auth";
+import { API_URL } from "@/lib/auth";
 
 interface BirthdayUser {
   id: string;
@@ -41,7 +41,7 @@ export default function Home() {
       try {
         const token = auth.user?.id_token;
         const res = await fetch(`${API_URL}/birthdays`, {
-          headers: { Authorization: token! },
+          headers: { Authorization: `Bearer ${token}` },
         });
         const data = (await res.json()) as ApiBirthday[];
         const normalized = data.map((b) => ({
@@ -74,7 +74,7 @@ export default function Home() {
       const res = await fetch(`${API_URL}/birthdays`, {
         method: "POST",
         headers: {
-          Authorization: token!,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(birthday),
@@ -109,6 +109,8 @@ export default function Home() {
       </div>
     );
   }
+  const token = auth.user?.id_token;
+console.log("TOKEN:", token);
 
   return (
     <div>

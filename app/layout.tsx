@@ -1,6 +1,6 @@
 "use client";
 import { AuthProvider } from "react-oidc-context";
-import { cognitoAuthConfig } from "@/src/lib/auth";
+import { cognitoAuthConfig } from "@/lib/auth";
 import "./globals.css";
 
 export default function RootLayout({
