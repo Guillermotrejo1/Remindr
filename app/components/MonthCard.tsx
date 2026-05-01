@@ -3,7 +3,7 @@ import { useState } from 'react';
 import BirthdayCard from './BirthdayCard';
 
 interface BirthdayUser { 
-  id: number; 
+  id: string | number; 
   name: string; 
   age: number; 
   date: string; 

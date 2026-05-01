@@ -15,7 +15,7 @@ interface BirthdayModalProps {
 }
 
 const DEFAULT_IMAGE =
-  "https://cdn.dashfight.com/9c019ad3b38050f88f70b5a401181afb8b62ca46_224.png";
+  "https://cdn.dashfight.com/db2bc319c6a33429831c1ef35516bd194107b241_224.png";
 
 const BirthdayModal = ({ onClose, onSubmit }: BirthdayModalProps) => {
   const [name, setName] = useState("");
