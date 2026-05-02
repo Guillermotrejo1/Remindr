@@ -109,9 +109,7 @@ export default function Home() {
       </div>
     );
   }
-  const token = auth.user?.id_token;
-console.log("TOKEN:", token);
-
+  
   return (
     <div>
       <div className="flex items-center justify-between px-6 mt-4">
