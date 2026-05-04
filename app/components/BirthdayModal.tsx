@@ -62,10 +62,10 @@ const BirthdayModal = ({ onClose, onSubmit }: BirthdayModalProps) => {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-2xl">
+    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-3 sm:p-4">
+      <div className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-lg bg-white p-4 sm:p-6 shadow-2xl">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold">Add Birthday</h2>
+          <h2 className="text-lg sm:text-xl font-bold">Add Birthday</h2>
           <button
             type="button"
             onClick={onClose}
@@ -110,8 +110,8 @@ const BirthdayModal = ({ onClose, onSubmit }: BirthdayModalProps) => {
           </div>
 
           {/* Month + Day side by side */}
-          <div className="flex gap-3">
-            <div className="flex-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
               <label className="block text-sm font-semibold mb-1" htmlFor="bm-month">
                 Month
               </label>
@@ -127,7 +127,7 @@ const BirthdayModal = ({ onClose, onSubmit }: BirthdayModalProps) => {
               />
               {errors.month && <p className="mt-1 text-xs text-red-600">{errors.month}</p>}
             </div>
-            <div className="flex-1">
+            <div>
               <label className="block text-sm font-semibold mb-1" htmlFor="bm-day">
                 Day
               </label>
@@ -163,17 +163,17 @@ const BirthdayModal = ({ onClose, onSubmit }: BirthdayModalProps) => {
           </div>
 
           {/* Actions */}
-          <div className="flex justify-end gap-2 pt-2">
+          <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2 pt-2">
             <button
               type="button"
               onClick={onClose}
-              className="cursor-pointer rounded border border-[#ccc] px-4 py-2 text-sm font-semibold text-[#555]"
+              className="cursor-pointer rounded border border-[#ccc] px-4 py-2 text-sm font-semibold text-[#555] w-full sm:w-auto"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="cursor-pointer rounded border-0 bg-linear-to-r from-[#f30c0c] to-[#e68c05] px-4 py-2 text-sm font-bold text-white hover:opacity-90"
+              className="cursor-pointer rounded border-0 bg-linear-to-r from-[#f30c0c] to-[#e68c05] px-4 py-2 text-sm font-bold text-white hover:opacity-90 w-full sm:w-auto"
             >
               Save Birthday
             </button>

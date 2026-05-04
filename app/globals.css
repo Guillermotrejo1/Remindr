@@ -23,8 +23,8 @@
 body {
   background: rgb(157, 222, 248);
   font-family: 'Poppins', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
 }

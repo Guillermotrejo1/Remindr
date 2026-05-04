@@ -119,20 +119,20 @@ export default function Home() {
 
   if (auth.isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p className="text-xl">Loading...</p>
+      <div className="flex items-center justify-center min-h-screen px-4">
+        <p className="text-lg sm:text-xl">Loading...</p>
       </div>
     );
   }
 
   if (!auth.isAuthenticated) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <h1 className="text-6xl font-bold">Remindr</h1>
-        <p className="text-gray-500">Sign in to see your birthdays</p>
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4 px-4 text-center">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">Remindr</h1>
+        <p className="text-gray-500 text-sm sm:text-base">Sign in to see your birthdays</p>
         <button
           onClick={() => auth.signinRedirect()}
-          className="rounded p-3 px-8 font-bold text-white bg-linear-to-r from-[#f30c0c] to-[#e68c05]"
+          className="w-full max-w-xs rounded p-3 px-8 font-bold text-white bg-linear-to-r from-[#f30c0c] to-[#e68c05]"
         >
           Sign In / Sign Up
         </button>
@@ -141,32 +141,32 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <div className="flex items-center justify-between px-6 mt-4">
-        <h1 className="text-6xl font-bold">Remindr</h1>
-        <div className="flex items-center gap-4">
-          <p className="text-gray-500 text-sm">👋 {auth.user?.profile.email}</p>
+    <div className="mx-auto w-full max-w-[1600px] px-3 py-4 sm:px-5 sm:py-6 lg:px-8">
+      <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Remindr</h1>
+        <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:justify-end sm:gap-4">
+          <p className="text-gray-600 text-xs sm:text-sm break-all">👋 {auth.user?.profile.email}</p>
           <button
             onClick={() => auth.removeUser()}
-            className="border rounded px-3 py-1 text-sm text-gray-600"
+            className="border rounded px-3 py-1 text-xs sm:text-sm text-gray-600"
           >
             Sign Out
           </button>
         </div>
       </div>
 
-      <div className="flex w-full items-center justify-center mt-4">
+      <div className="mb-4 flex w-full items-center justify-center sm:mb-6">
         <button
           onClick={() => setIsOpen(true)}
-          className="max-w-125 border rounded-sm p-2 text-center cursor-pointer bg-linear-to-r from-[#f30c0c] to-[#e68c05] text-white font-bold"
+          className="w-full max-w-sm border rounded-sm p-2 text-center text-sm sm:text-base cursor-pointer bg-linear-to-r from-[#f30c0c] to-[#e68c05] text-white font-bold"
         >
           Add Birthday 🎉
         </button>
       </div>
 
-      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 p-5 items-start">
+      <main className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 items-start">
         {loading ? (
-          <p className="col-span-4 text-center text-gray-400">
+          <p className="col-span-full text-center text-gray-400 py-8">
             Loading birthdays...
           </p>
         ) : (
