@@ -23,9 +23,18 @@ interface ApiBirthday {
 }
 
 const months = [
-  "January", "February", "March", "April",
-  "May", "June", "July", "August",
-  "September", "October", "November", "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 export default function Home() {
@@ -87,6 +96,27 @@ export default function Home() {
     }
   }
 
+  async function handleDeleteBirthday(id: string) {
+    try {
+      const token = auth.user?.id_token;
+
+      const res = await fetch(`${API_URL}/birthdays/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to delete birthday");
+      }
+
+      setAllUsers((prev) => prev.filter((user) => user.id !== id));
+    } catch (err) {
+      console.error("Failed to delete birthday", err);
+    }
+  }
+
   if (auth.isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -109,15 +139,13 @@ export default function Home() {
       </div>
     );
   }
-  
+
   return (
     <div>
       <div className="flex items-center justify-between px-6 mt-4">
         <h1 className="text-6xl font-bold">Remindr</h1>
         <div className="flex items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            👋 {auth.user?.profile.email}
-          </p>
+          <p className="text-gray-500 text-sm">👋 {auth.user?.profile.email}</p>
           <button
             onClick={() => auth.removeUser()}
             className="border rounded px-3 py-1 text-sm text-gray-600"
@@ -148,6 +176,7 @@ export default function Home() {
               monthName={monthName}
               users={users}
               initialShow={3}
+              onDelete={handleDeleteBirthday}
             />
           ))
         )}

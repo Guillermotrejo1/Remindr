@@ -3,7 +3,7 @@ import { useState } from 'react';
 import BirthdayCard from './BirthdayCard';
 
 interface BirthdayUser { 
-  id: string | number; 
+  id: string; 
   name: string; 
   age: number; 
   date: string; 
@@ -14,9 +14,10 @@ interface MonthCardProps {
   monthName: string;
   users: BirthdayUser[];
   initialShow?: number;
+  onDelete: (id:string) => void;
 }
 
-const MonthCard = ({ monthName, users, initialShow = 3 }: MonthCardProps) => {
+const MonthCard = ({ monthName, users, initialShow = 3, onDelete }: MonthCardProps) => {
   const [displayCount, setDisplayCount] = useState(initialShow);
 
   function showMore() {
@@ -42,7 +43,7 @@ const MonthCard = ({ monthName, users, initialShow = 3 }: MonthCardProps) => {
         </p>
       ) : (
         <>
-          <BirthdayCard users={visibleUsers} />
+          <BirthdayCard users={visibleUsers} onDelete={onDelete} />
           
           {users.length > initialShow && (
             displayCount < users.length ? (
