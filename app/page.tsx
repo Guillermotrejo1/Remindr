@@ -4,7 +4,7 @@ import { useAuth } from "react-oidc-context";
 import MonthCard from "./components/MonthCard";
 import BirthdayModal from "./components/BirthdayModal";
 import type { NewBirthdayInput } from "./components/BirthdayModal";
-import { API_URL } from "@/lib/auth";
+import { API_URL } from "../src/lib/auth";
 
 interface BirthdayUser {
   id: string;
@@ -141,7 +141,7 @@ export default function Home() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[1600px] px-3 py-4 sm:px-5 sm:py-6 lg:px-8">
+    <div className="mx-auto w-full max-w-400 px-3 py-4 sm:px-5 sm:py-6 lg:px-8">
       <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Remindr</h1>
         <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:justify-end sm:gap-4">
