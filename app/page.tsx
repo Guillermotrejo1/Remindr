@@ -154,7 +154,7 @@ export default function Home() {
           <p className="text-gray-600 text-xs sm:text-sm break-all">👋 {auth.user?.profile.email}</p>
           <button
             onClick={handleSignOut}
-            className="border rounded px-3 py-1 text-xs sm:text-sm text-gray-600"
+            className="border rounded px-3 py-1 text-xs sm:text-sm text-gray-600 cursor-pointer"
           >
             Sign Out
           </button>
