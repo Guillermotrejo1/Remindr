@@ -4,7 +4,7 @@ import { useAuth } from "react-oidc-context";
 import MonthCard from "./components/MonthCard";
 import BirthdayModal from "./components/BirthdayModal";
 import type { NewBirthdayInput } from "./components/BirthdayModal";
-import { API_URL } from "../src/lib/auth";
+import { API_URL, COGNITO_DOMAIN, cognitoAuthConfig } from "../src/lib/auth";
 
 interface BirthdayUser {
   id: string;
@@ -140,6 +140,12 @@ export default function Home() {
     );
   }
 
+  function handleSignOut() {
+    const logoutUri = encodeURIComponent(cognitoAuthConfig.redirect_uri);
+    auth.removeUser();
+    window.location.href = `${COGNITO_DOMAIN}/logout?client_id=${cognitoAuthConfig.client_id}&logout_uri=${logoutUri}`;
+  }
+
   return (
     <div className="mx-auto w-full max-w-400 px-3 py-4 sm:px-5 sm:py-6 lg:px-8">
       <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
@@ -147,7 +153,7 @@ export default function Home() {
         <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:justify-end sm:gap-4">
           <p className="text-gray-600 text-xs sm:text-sm break-all">👋 {auth.user?.profile.email}</p>
           <button
-            onClick={() => auth.removeUser()}
+            onClick={handleSignOut}
             className="border rounded px-3 py-1 text-xs sm:text-sm text-gray-600"
           >
             Sign Out
